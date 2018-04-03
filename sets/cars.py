@@ -41,8 +41,12 @@ print("Showroom Junkard Intersection")
 print(showroom.intersection(junkyard))
 print()
 
+showroom = showroom.union(junkyard)
+print("Showroom Junkard Union")
 print(showroom)
 print()
 
-print("Showroom Junkard Union")
-print(showroom.union(junkyard))
+showroom.discard("Junkyard Car 3")
+print("Discarded Junkyard Car 3")
+print(showroom)
+
