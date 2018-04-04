@@ -1,3 +1,14 @@
+class purchase_report_class():
+    def __init__(self, stockDict, purchases):
+
+        self.data = { x: 0 for x in set(stockDict.keys())}
+        for purchase in purchases:
+            self.data[purchase[0]] += purchase[1]
+
+    def print(self):
+        for symbol, value in self.data.items():
+            print(f"{symbol} : {value}")
+
 stockDict = { 
     'GE': 'General Electric',
     'GM': 'General Motors',
@@ -30,21 +41,24 @@ for line in purchase_report:
 
 purchase_report_2 = {}
 
-# Define a function to print the purchase report
-def print_1(self):
-    for symbol, value in self["data"].items():
-        print(f"{symbol} : {value}")
+# # Define a function to print the purchase report
+# def _print(self):
+#     for symbol, value in self["data"].items():
+#         print(f"{symbol} : {value}")
 
-# Add the print function as a key on the purchase report dict
-purchase_report_2['print'] = print_1
+# # Add the print function as a key on the purchase report dict
+# purchase_report_2['print'] = _print
 
-# Use dictionary comprehension to create a list of unique stock symbols as a data property on the dict
-purchase_report_2['data'] = { x: 0 for x in set(stockDict.keys())}
+# # Use dictionary comprehension to create a list of unique stock symbols as a data property on the dict
+# purchase_report_2['data'] = { x: 0 for x in set(stockDict.keys())}
 
-# Iterate over the purchases tuples and add stock quantites to the corresponding entry in the purchase_report_2 dict
-for purchase in purchases:
-    purchase_report_2['data'][purchase[0]] += purchase[1]
+# # Iterate over the purchases tuples and add stock quantites to the corresponding entry in the purchase_report_2 dict
+# for purchase in purchases:
+#     purchase_report_2['data'][purchase[0]] += purchase[1]
 
-# Call the print function -- and pass itself in??
-purchase_report_2['print'](purchase_report_2)
+# # Call the print function -- and pass itself in??
+# purchase_report_2['print'](purchase_report_2)
 
+pr2 = purchase_report_class(stockDict, purchases)
+
+pr2.print()
