@@ -32,7 +32,7 @@ class automate():
         url2 = 'https://api.github.com/repos/camilleryr/python-exercises/issues'
         for target_issue in self.issues:
             source_issue = next(i for i in response1 if match(i['id'], target_issue.source_id))
-            body = {'title': target_issue.title, 'body': target_issue.body}
+            body = {'title': source_issue['title'], 'body': source_issue['body']}
             
             response = requests.post(url2, json=body, headers=self.headers).json()
             target_issue.target_id = response['id']
@@ -70,7 +70,10 @@ auto = automate()
 
 auto.get_issues().migrate_issues().create_project().create_columns().groom_backlog()
 
+
 # Source Repo will be saved to the DB and will need to be passed into the class on instantiation
+
+# Project Name and body will need to come from the DB and be passed in on instantiation
 
 # Target Repos will be entered from the client and will need to be grabbed from an HTTP request and 
 # passed into the class on instantiation
@@ -85,3 +88,4 @@ auto.get_issues().migrate_issues().create_project().create_columns().groom_backl
 # and create an additinal abstracted method that can call the composed method for each target repo
 # ie migrate(target) = composed method / migrate_all = for each target repo call compose method(target)
 
+# Break out into 2 classes?  1 to handle data and one to handle automation
