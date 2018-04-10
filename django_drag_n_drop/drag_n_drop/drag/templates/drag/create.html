@@ -1,0 +1,33 @@
+{% load static %}
+
+<link href="{% static 'drag/node_modules/dragula/example/example.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'drag/node_modules/dragula/dist/dragula.css' %}" rel='stylesheet' type='text/css' />
+
+<h1>{{ sprint_name }}</h1>
+
+{% if issues %}
+    <div id="left-defaults" class="container"></div>
+    <div id="right-defaults" class="container">
+        {% for issue in issues %}
+            <div class="{{ issue.id }}">{{ issue.ticket_number }} : {{ issue.title }}</div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+<form action="./display" method="post">
+    {% csrf_token %}
+    <input type="hidden" id="sprint_name" name="sprint_name" value="{{sprint_name}}">
+    <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo}}">
+    <input type="hidden" id="issue_array" name="issue_array" value="">
+    <input type="submit" value="OK">
+</form>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static "drag/node_modules/dragula/dist/dragula.min.js" %}"></script>
+<script type="text/javascript" src="{% static "drag/js/main.js" %}"></script>

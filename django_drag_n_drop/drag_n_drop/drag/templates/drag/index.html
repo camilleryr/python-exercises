@@ -1,22 +1,21 @@
 {% load static %}
 
-<link href="{% static 'node_modules/dragula/example/example.css' %}" rel='stylesheet' type='text/css' />
-<link href="{% static 'node_modules/dragula/dist/dragula.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'drag/node_modules/dragula/example/example.css' %}" rel='stylesheet' type='text/css' />
 
-{% if issues %}
-    <div id="left-defaults" class="container"></div>
-    <div id="right-defaults" class="container">
-        {% for issue in issues %}
-            <div class="{{ issue.id }}">{{ issue.title }}</div>
-        {% endfor %}
-    </div>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<form action="./create" method="post">
+    {% csrf_token %}
+    <label for="sprint">Sprint Name :</label>
+    <input id="sprint" type="text" name="sprint" placeholder="ie Bangazon CLI">
+    <br>
+    <label for="source_repo">Source Repo :</label>
+    <input id="source_repo" type="text" name="source_repo" placeholder="https://github.com/camilleryr/bandstagram/">
+    <br>
+    <label for="your_name">Github Username :</label>
+    <input id="username" type="text" name="username" placeholder="ie email@gmail.com">
+    <br>
+    <label for="your_name">Github Password :</label>
+    <input id="password" type="password" name="password" placeholder="password">
+    <br>
+    <input type="submit" value="OK">
+</form>
 
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script type="text/javascript" src="{% static "node_modules/dragula/dist/dragula.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/main.js" %}"></script>
