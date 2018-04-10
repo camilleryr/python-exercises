@@ -10,6 +10,3 @@ dragula_obj.on('drop', e => {
 })
 
 //convert jQuery collection to array - map to convert results to a array of objects {id, priority}
-let ordered_issues = Object.assign([], results_container).map((x, i) => {return {'id':parseInt(x.className),'priority':i}})
-
-//use ajax to send backlog name and ordered_issues back to backend

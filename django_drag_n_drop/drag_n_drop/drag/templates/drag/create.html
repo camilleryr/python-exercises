@@ -17,7 +17,7 @@
 {% endif %}
 
 
-<form action="./display" method="post">
+<form action="./migrate" method="post">
     {% csrf_token %}
     <input type="hidden" id="sprint_name" name="sprint_name" value="{{sprint_name}}">
     <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo}}">

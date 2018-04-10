@@ -1,0 +1,22 @@
+{% load static %}
+
+<link href="{% static 'drag/node_modules/dragula/example/example.css' %}" rel='stylesheet' type='text/css' />
+<h1>{{ sprint_name }}</h1>
+<h1>{{ source_repo }}</h1>
+<br>
+<form action="./display" method="post">
+    {% csrf_token %}
+    <input type="hidden" id="sprint_name" name="sprint_name" value="{{sprint_name}}">
+    <input type="hidden" id="source_repo" name="source_repo" value="{{source_repo}}">
+    <input type="hidden" id="issue_array" name="issue_array" value="{{issue_array}}">
+    <label for="username">Github Username :</label>
+    <input id="username" type="text" name="username" placeholder="ie email@gmail.com">
+    <br>
+    <label for="password">Github Password :</label>
+    <input id="password" type="password" name="password" placeholder="password">
+    <br>
+    <textarea rows="4" cols="123" name="target_repos">Enter target repos comma separated ie camilleryr/bandstagram, camilleryr/python-exercises
+    </textarea>
+    <input type="submit" value="OK">
+</form>
+
